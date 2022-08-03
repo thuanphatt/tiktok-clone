@@ -75,6 +75,9 @@
 }
 
 .search-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: var(--search-button-width);
     height: 100%;
     border-top-right-radius: var(--search-border-radius);
@@ -106,18 +109,11 @@
     background-color: transparent;
 }
 .action-btn {
+    position: relative;
+    display: flex;
     color: #161823;
-    padding: 4px 12px;
+    padding: 4px 10px 4px 13px;
     font-size: 2.2rem;
     background-color: transparent;
-    cursor: pointer;
-}
-
-.user-avatar {
-    width: 32px;
-    height: 32px;
-    object-fit: cover;
-    border-radius: 52px;
-    margin-left: 12px;
     cursor: pointer;
 }

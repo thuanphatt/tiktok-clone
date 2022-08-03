@@ -10,10 +10,8 @@ import {
     faEarthAsia,
     faQuestionCircle,
     faKeyboard,
-    faCloudUploadAlt,
     faCoins,
     faStore,
-    faGears,
     faSignOut,
     faCog,
 } from '@fortawesome/free-solid-svg-icons';
@@ -27,6 +25,8 @@ import images from '~/assets/images';
 import AccountItem from '~/components/AccountItem';
 import Menu from '~/components/Popper/Menu';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
+import { InboxIcon, MessageIcon } from '~/components/Icons';
+import Image from '~/components/Image';
 const cx = classNames.bind(styles);
 const MENU_ITEMS = [
     {
@@ -150,13 +150,32 @@ function Header() {
                 <div className={cx('actions')}>
                     {currentUser ? (
                         <>
+                            <Button
+                                text
+                                leftIcon={
+                                    <FontAwesomeIcon
+                                        icon={faPlus}
+                                    ></FontAwesomeIcon>
+                                }
+                            >
+                                Upload
+                            </Button>
                             <Tippy
                                 delay={[0, 50]}
-                                content="Upload video"
+                                content="Message"
                                 placement="bottom"
                             >
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faCloudUploadAlt} />
+                                    <MessageIcon />
+                                </button>
+                            </Tippy>
+                            <Tippy
+                                delay={[0, 50]}
+                                content="Inbox"
+                                placement="bottom"
+                            >
+                                <button className={cx('action-btn')}>
+                                    <InboxIcon />
                                 </button>
                             </Tippy>
                         </>
@@ -177,11 +196,12 @@ function Header() {
                     )}
                     <Menu items={userMenu} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <img
+                            <Image
                                 className={cx('user-avatar')}
                                 src="https://avatars.githubusercontent.com/u/95758970?v=4"
                                 alt="Nguyen Thuan Phat"
-                            ></img>
+                                fallback="https://static.fullstack.edu.vn/static/media/f8-icon.18cd71cfcfa33566a22b.png"
+                            ></Image>
                         ) : (
                             <button className={cx('more-btn')}>
                                 <FontAwesomeIcon
