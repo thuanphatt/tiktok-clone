@@ -32,11 +32,9 @@ function Search() {
         setShowResult(false);
     };
     const handleChange = (e) => {
-        let value = e.target.value;
-        if (value.trim() === '') value = '';
-        setSearchValue(value);
+        let searchValue = e.target.value;
+        if (!searchValue.startsWith(' ')) setSearchValue(searchValue);
     };
-
     useEffect(() => {
         if (!debounded.trim()) {
             setSearchResult([]);
@@ -89,7 +87,12 @@ function Search() {
                     />
                 )}
 
-                <button className={cx('search-btn')}>
+                <button
+                    className={cx('search-btn')}
+                    onMouseDown={(e) => {
+                        e.preventDefault();
+                    }}
+                >
                     <SearchIcon />
                 </button>
             </div>
