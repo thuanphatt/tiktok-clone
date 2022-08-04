@@ -50,6 +50,7 @@ function Search() {
     }, [debounded]);
     return (
         <HeadlessTippy
+            appendTo={() => document.body}
             interactive
             visible={showResult && searchResult.length > 0}
             render={(attrs) => (
