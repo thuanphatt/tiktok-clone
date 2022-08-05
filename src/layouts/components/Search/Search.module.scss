@@ -36,7 +36,7 @@
         top: var(--search-top-spacer);
         right: var(--search-button-width);
         height: calc(var(--search-height) - var(--search-top-spacer) * 2);
-        width: 1px;
+        width: 0.5px;
         background-color: rgba(22, 24, 35, 0.12);
     }
     &:focus-within {
