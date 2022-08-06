@@ -21,6 +21,7 @@
     input {
         flex: 1;
         height: 100%;
+        padding-right: 40px;
         color: var(--black);
         font-size: 1.6rem;
         background-color: transparent;
@@ -54,6 +55,11 @@
 }
 .loading {
     animation: spinner 0.8s linear infinite;
+}
+.clear {
+    &:focus {
+        outline: none;
+    }
 }
 @keyframes spinner {
     from {

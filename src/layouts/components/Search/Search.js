@@ -15,10 +15,10 @@ const cx = classNames.bind(styles);
 function Search() {
     const [searchValue, setSearchValue] = useState('');
     const [searchResult, setSearchResult] = useState([]);
-    const [showResult, setShowResult] = useState(true);
+    const [showResult, setShowResult] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    const debounded = useDebounce(searchValue, 500);
+    const debouncedValue = useDebounce(searchValue, 500);
 
     const inputRef = useRef();
 
@@ -36,18 +36,18 @@ function Search() {
         if (!searchValue.startsWith(' ')) setSearchValue(searchValue);
     };
     useEffect(() => {
-        if (!debounded.trim()) {
+        if (!debouncedValue.trim()) {
             setSearchResult([]);
             return;
         }
         const fetchApi = async () => {
             setLoading(true);
-            const result = await searchService.search(debounded);
+            const result = await searchService.search(debouncedValue);
             setSearchResult(result);
             setLoading(false);
         };
         fetchApi();
-    }, [debounded]);
+    }, [debouncedValue]);
     return (
         <HeadlessTippy
             appendTo={() => document.body}
